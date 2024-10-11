@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import fs from 'fs';
 
 export const generateCompany = (id) => {
     faker.seed(id);
@@ -32,10 +33,17 @@ export const generateCompany = (id) => {
     };
 };
 
+export const generateData = () => {
+    const companies = [];
+    for (let i = 1; i <= 10; i++) {
+        companies.push(generateCompany(i));
+    }
 
-
-// const books = [];
-
-// for (let i = 0; i < 10; i++) {
-//     books.push(generateCompany(i));
-// }
+    fs.writeFileSync('companies.json', JSON.stringify(companies, null, 2), (err) => {
+        if (err) {
+            console.error('Error:', err);
+        } else {
+            console.log('Data successfully saved to companies.json');
+        }
+    });
+}

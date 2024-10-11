@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "company_name": "Reichel Group",
+    "ticker": "PHE",
+    "industry": "Clothing",
+    "market_cap": 7565653814,
+    "stock_price": "$119.63",
+    "annual_change_percentage": "%35.43",
+    "pe_ratio": "16.77",
+    "last_update": "2024-10-11",
+    "CEO": {
+      "name": "Meghan Osinski",
+      "age": 52,
+      "years_in_position": 3,
+      "previous_company": "Schmidt - Wisoky",
+      "location": {
+        "country": "French Polynesia",
+        "state": "Ohio",
+        "city": "The Woodlands"
+      }
+    },
+    "location": {
+      "country": "Belgium",
+      "state": "Alaska",
+      "city": "Fort Aydenview"
+    }
+  },
+  {
+    "id": 2,
+    "company_name": "Balistreri LLC",
+    "ticker": "WVR",
+    "industry": "Clothing",
+    "market_cap": 12766148361,
+    "stock_price": "$90.59",
+    "annual_change_percentage": "%-2.65",
+    "pe_ratio": "24.85",
+    "last_update": "2024-10-11",
+    "CEO": {
+      "name": "Ms. Marsha Schaden",
+      "age": 64,
+      "years_in_position": 2,
+      "previous_company": "Bergnaum Inc",
+      "location": {
+        "country": "Bermuda",
+        "state": "Connecticut",
+        "city": "Danialland"
+      }
+    },
+    "location": {
+      "country": "Croatia",
+      "state": "Louisiana",
+      "city": "Collinfurt"
+    }
+  },
+  {
+    "id": 3,
+    "company_name": "Quigley Inc",
+    "ticker": "AUU",
+    "industry": "Beauty",
+    "market_cap": 4937614684,
+    "stock_price": "$16.38",
+    "annual_change_percentage": "%21.71",
+    "pe_ratio": "1.19",
+    "last_update": "2024-10-11",
+    "CEO": {
+      "name": "Barry McLaughlin",
+      "age": 52,
+      "years_in_position": 4,
+      "previous_company": "Graham LLC",
+      "location": {
+        "country": "Israel",
+        "state": "Delaware",
+        "city": "Osbaldoborough"
+      }
+    },
+    "location": {
+      "country": "Cuba",
+      "state": "Maryland",
+      "city": "Weston"
+    }
+  },
+  {
+    "id": 4,
+    "company_name": "Lockman, Wiza and Rau",
+    "ticker": "KLY",
+    "industry": "Automotive",
+    "market_cap": 5806664885,
+    "stock_price": "$131.00",
+    "annual_change_percentage": "%69.12",
+    "pe_ratio": "7.90",
+    "last_update": "2024-10-11",
+    "CEO": {
+      "name": "Russell Altenwerth",
+      "age": 31,
+      "years_in_position": 15,
+      "previous_company": "White and Sons",
+      "location": {
+        "country": "Switzerland",
+        "state": "Florida",
+        "city": "New Catherinecester"
+      }
+    },
+    "location": {
+      "country": "Hungary",
+      "state": "Nebraska",
+      "city": "Madison"
+    }
+  },
+  {
+    "id": 5,
+    "company_name": "Strosin - DuBuque",
+    "ticker": "VZF",
+    "industry": "Music",
+    "market_cap": 10849941770,
+    "stock_price": "$89.74",
+    "annual_change_percentage": "%-13.72",
+    "pe_ratio": "3.23",
+    "last_update": "2024-10-11",
+    "CEO": {
+      "name": "Marilyn Goodwin",
+      "age": 42,
+      "years_in_position": 10,
+      "previous_company": "Miller Inc",
+      "location": {
+        "country": "Eswatini",
+        "state": "Illinois",
+        "city": "East Cassandra"
+      }
+    },
+    "location": {
+      "country": "Venezuela",
+      "state": "Wisconsin",
+      "city": "North Connorcester"
+    }
+  },
+  {
+    "id": 6,
+    "company_name": "Hartmann, Schuster and Bauch",
+    "ticker": "FEB",
+    "industry": "Grocery",
+    "market_cap": 7372749136,
+    "stock_price": "$187.13",
+    "annual_change_percentage": "%21.34",
+    "pe_ratio": "29.44",
+    "last_update": "2024-10-11",
+    "CEO": {
+      "name": "Doug Schuppe-Jerde PhD",
+      "age": 32,
+      "years_in_position": 11,
+      "previous_company": "Rippin, Quitzon and Lindgren",
+      "location": {
+        "country": "Brazil",
+        "state": "West Virginia",
+        "city": "Curtcester"
+      }
+    },
+    "location": {
+      "country": "Zambia",
+      "state": "Illinois",
+      "city": "Millercester"
+    }
+  },
+  {
+    "id": 7,
+    "company_name": "Satterfield - Kessler",
+    "ticker": "LYC",
+    "industry": "Home",
+    "market_cap": 2368971533,
+    "stock_price": "$81.26",
+    "annual_change_percentage": "%29.98",
+    "pe_ratio": "27.17",
+    "last_update": "2024-10-11",
+    "CEO": {
+      "name": "Anna Vandervort",
+      "age": 48,
+      "years_in_position": 14,
+      "previous_company": "Mills - Wiegand",
+      "location": {
+        "country": "Cyprus",
+        "state": "Nevada",
+        "city": "Cambridge"
+      }
+    },
+    "location": {
+      "country": "Luxembourg",
+      "state": "Pennsylvania",
+      "city": "Kossberg"
+    }
+  },
+  {
+    "id": 8,
+    "company_name": "Wisozk, Strosin and Lemke",
+    "ticker": "MAW",
+    "industry": "Garden",
+    "market_cap": 10930818756,
+    "stock_price": "$144.04",
+    "annual_change_percentage": "%37.75",
+    "pe_ratio": "21.74",
+    "last_update": "2024-10-11",
+    "CEO": {
+      "name": "Wendell Green II",
+      "age": 38,
+      "years_in_position": 1,
+      "previous_company": "Champlin, Hand and Bernier",
+      "location": {
+        "country": "Cuba",
+        "state": "Maryland",
+        "city": "Georgetown"
+      }
+    },
+    "location": {
+      "country": "Western Sahara",
+      "state": "Alaska",
+      "city": "South Norris"
+    }
+  },
+  {
+    "id": 9,
+    "company_name": "Kuvalis - Kunze",
+    "ticker": "GHL",
+    "industry": "Grocery",
+    "market_cap": 5713922200,
+    "stock_price": "$26.13",
+    "annual_change_percentage": "%8.37",
+    "pe_ratio": "6.67",
+    "last_update": "2024-10-11",
+    "CEO": {
+      "name": "Brian Marquardt MD",
+      "age": 52,
+      "years_in_position": 11,
+      "previous_company": "Powlowski and Sons",
+      "location": {
+        "country": "Kazakhstan",
+        "state": "West Virginia",
+        "city": "Wilmington"
+      }
+    },
+    "location": {
+      "country": "Central African Republic",
+      "state": "Nebraska",
+      "city": "Oshkosh"
+    }
+  },
+  {
+    "id": 10,
+    "company_name": "Aufderhar, Nader and Rohan",
+    "ticker": "ZLK",
+    "industry": "Music",
+    "market_cap": 4213105894,
+    "stock_price": "$27.41",
+    "annual_change_percentage": "%55.95",
+    "pe_ratio": "38.14",
+    "last_update": "2024-10-10",
+    "CEO": {
+      "name": "Irving Reichert",
+      "age": 67,
+      "years_in_position": 11,
+      "previous_company": "Conroy Inc",
+      "location": {
+        "country": "Oman",
+        "state": "Minnesota",
+        "city": "Liammouth"
+      }
+    },
+    "location": {
+      "country": "Nigeria",
+      "state": "New Mexico",
+      "city": "Madison"
+    }
+  }
+]
