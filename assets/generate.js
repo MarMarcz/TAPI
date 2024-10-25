@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import fs from 'fs';
 
-export const generateCompany = (id) => {
+export const generateCompany = (id, ceoId) => {
     faker.seed(id);
 
     return {
@@ -14,18 +14,9 @@ export const generateCompany = (id) => {
         annual_change_percentage: faker.finance.amount({ min: -40, max: 100, symbol: '%' }),
         pe_ratio: faker.finance.amount({ min: 0, max: 40 }),
         last_update: faker.date.recent().toISOString().split('T')[0],
-        CEO: {
-            name: faker.person.fullName(),
-            age: faker.number.int({ min: 30, max: 70 }),
-            years_in_position: faker.number.int({ min: 1, max: 15 }),
-            previous_company: faker.company.name(),
-            location: {
-                country: faker.location.country(),
-                state: faker.location.state(),
-                city: faker.location.city()
-            }
-        },
+        ceo_id: ceoId,
         location: {
+            id: id,
             country: faker.location.country(),
             state: faker.location.state(),
             city: faker.location.city()
@@ -33,17 +24,39 @@ export const generateCompany = (id) => {
     };
 };
 
+export const generateCeo = (id) => {
+    faker.seed(id);
+  
+    return {
+      id: id,
+      name: faker.person.fullName(),
+      age: faker.number.int({ min: 30, max: 70 }),
+      years_in_position: faker.number.int({ min: 1, max: 15 }),
+      previous_company: faker.company.name(),
+      location_ceo: {
+        id: id,
+        country: faker.location.country(),
+        state: faker.location.state(),
+        city: faker.location.city()
+      }
+    };
+  };
+
 export const generateData = () => {
     const companies = [];
+    const ceos = [];
     for (let i = 1; i <= 10; i++) {
-        companies.push(generateCompany(i));
+      const ceoId = 100 + i;
+      ceos.push(generateCeo(ceoId));
+      companies.push(generateCompany(i, ceoId));
     }
-
-    fs.writeFileSync('companies.json', JSON.stringify(companies, null, 2), (err) => {
-        if (err) {
-            console.error('Error:', err);
-        } else {
-            console.log('Data successfully saved to companies.json');
-        }
+  
+    const data = { companies, ceos };
+    fs.writeFileSync('companies.json', JSON.stringify(data, null, 2), (err) => {
+      if (err) {
+        console.error('Error:', err);
+      } else {
+        console.log('Data successfully saved to companies.json');
+      }
     });
-}
+  };

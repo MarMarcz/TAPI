@@ -3,8 +3,9 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path'; 
 import { generateData } from './assets/generate.js';
+// import { companyRouter } from './routes/companyRoute.js';
 
-const app = new express();
+const app = express();
 const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,8 +23,9 @@ const writeData = (data) => {
   fs.writeFileSync(path.join(__dirname, 'companies.json'), JSON.stringify(data, null, 2)); 
 };
 
-app.get('/all', (req, res) => {
-  const companies = readData();
+app.get('/companies', (req, res) => {
+  const data = readData();
+  const companies = data.companies;
   if (companies && companies.length > 0) {
     res.json(companies); 
   } else {
@@ -31,9 +33,14 @@ app.get('/all', (req, res) => {
   }
 });  
 
-app.get('/:id', (req, res) => {
-  const companies = readData();
-  const company = companies.find(c => c.id === Number(req.params.id));
+app.get('/ceos', (req, res) => {
+  const data = readData();
+  res.json(data.ceos);
+});
+
+app.get('/company/:id', (req, res) => {
+  const data = readData();
+  const company = data.companies.find(c => c.id === Number(req.params.id)); 
   if (company) {
     res.json(company); 
   } else {
@@ -41,22 +48,33 @@ app.get('/:id', (req, res) => {
   }
 });
 
-app.post('/', (req, res) => {
-  const companies = readData();
+
+app.get('/ceo/:id', (req, res) => {
+  const data = readData();
+  const ceo = data.ceos.find(c => c.id === Number(req.params.id));
+  if (ceo) {
+    res.json(ceo);
+  } else {
+    res.status(404).send('CEO not found');
+  }
+});
+
+app.post('/company', (req, res) => {
+  const data = readData();
   const newCompany = req.body;
   
-  const newId = companies.length > 0 ? Math.max(...companies.map(c => c.id)) + 1 : 1;
+  const newId = data.companies.length > 0 ? Math.max(...data.companies.map(c => c.id)) + 1 : 1;
   newCompany.id = newId;
 
-  companies.push(newCompany);
-  writeData(companies);
+  data.companies.push(newCompany);
+  writeData(data);
 
   res.status(201).json(newCompany); 
 });
 
-app.put('/:id', (req, res) => {
-  const companies = readData();
-  const companyIndex = companies.findIndex(c => c.id === Number(req.params.id));
+app.put('/company/:id', (req, res) => {
+  const data = readData();
+  const companyIndex = data.companies.findIndex(c => c.id === Number(req.params.id));
 
   if (companyIndex === -1) {
     return res.status(404).send('Company not found');
@@ -65,35 +83,91 @@ app.put('/:id', (req, res) => {
   const newCompany = req.body;
   newCompany.id = Number(req.params.id); 
 
-  companies[companyIndex] = newCompany;
+  data.companies[companyIndex] = newCompany;
 
-  writeData(companies);
+  writeData(data);
 
   res.json(newCompany);
 });
 
-app.patch('/:id', (req, res) => {
-  const companies = readData();
-  const companyIndex = companies.findIndex(c => c.id === Number(req.params.id));
+
+app.patch('/company/:id', (req, res) => {
+  const data = readData();
+  const companyIndex = data.companies.findIndex(c => c.id === Number(req.params.id)); 
 
   if (companyIndex === -1) {
     return res.status(404).send('Company not found');
   }
 
-  const updatedCompany = { ...companies[companyIndex], ...req.body };
-  companies[companyIndex] = updatedCompany;
+  const updatedCompany = { ...data.companies[companyIndex], ...req.body };
+  data.companies[companyIndex] = updatedCompany; 
 
-  writeData(companies);
+  writeData(data);
 
   res.json(updatedCompany);
 });
 
+//TODO: unique id for ceo
+app.post('/ceo', (req, res) => {
+  const data = readData();
+  const newCeo = req.body;
 
-app.delete('/:id', (req, res) => {
-  const companies = readData();
-  const updatedCompanies = companies.filter(c => c.id !== Number(req.params.id));
-  writeData(updatedCompanies); 
+  const newId = data.ceos.length > 0 ? Math.max(...data.ceos.map(c => c.id)) + 1 : 100;
+  newCeo.id = newId;
+
+  data.ceos.push(newCeo);
+  writeData(data);
+
+  res.status(201).json(newCeo);
+});
+
+app.put('/ceo/:id', (req, res) => {
+  const data = readData();
+  const ceoIndex = data.ceos.findIndex(c => c.id === Number(req.params.id));
+
+  if (ceoIndex === -1) {
+    return res.status(404).send('CEO not found');
+  }
+
+  const updatedCeo = req.body;
+  updatedCeo.id = Number(req.params.id); 
+
+  data.ceos[ceoIndex] = updatedCeo;
+  writeData(data);
+
+  res.json(updatedCeo);
+});
+
+app.patch('/ceo/:id', (req, res) => {
+  const data = readData();
+  const ceoIndex = data.ceos.findIndex(c => c.id === Number(req.params.id));
+
+  if (ceoIndex === -1) {
+    return res.status(404).send('CEO not found');
+  }
+
+  const updatedCeo = { ...data.ceos[ceoIndex], ...req.body };
+  data.ceos[ceoIndex] = updatedCeo;
+  
+  writeData(data);
+
+  res.json(updatedCeo);
+});
+
+
+app.delete('/company/:id', (req, res) => {
+  const data = readData();
+  const updatedCompanies = data.companies.filter(c => c.id !== Number(req.params.id));
+  data.companies = updatedCompanies; 
+  writeData(data); 
   res.send(`Deleted company with id: ${req.params.id}`);
+});
+app.delete('/ceo/:id', (req, res) => {
+  const data = readData();
+  const updatedCompanies = data.ceos.filter(c => c.id !== Number(req.params.id));
+  data.companies = updatedCompanies; 
+  writeData(data); 
+  res.send(`Deleted ceo with id: ${req.params.id}`);
 });
 
 app.listen(port, () => {
