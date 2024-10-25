@@ -1,7 +1,18 @@
 import { faker } from '@faker-js/faker';
 import fs from 'fs';
 
-export const generateCompany = (id, ceoId) => {
+export const generateLocation = (id) => {
+    faker.seed(id);
+
+    return {
+        id: id,
+        country: faker.location.country(),
+        state: faker.location.state(),
+        city: faker.location.city()
+    };
+};
+
+export const generateCompany = (id, ceoId, locationId) => {
     faker.seed(id);
 
     return {
@@ -15,48 +26,46 @@ export const generateCompany = (id, ceoId) => {
         pe_ratio: faker.finance.amount({ min: 0, max: 40 }),
         last_update: faker.date.recent().toISOString().split('T')[0],
         ceo_id: ceoId,
-        location: {
-            id: id,
-            country: faker.location.country(),
-            state: faker.location.state(),
-            city: faker.location.city()
-        }
+        location_id: locationId
     };
 };
 
-export const generateCeo = (id) => {
+export const generateCeo = (id, locationId) => {
     faker.seed(id);
   
     return {
-      id: id,
-      name: faker.person.fullName(),
-      age: faker.number.int({ min: 30, max: 70 }),
-      years_in_position: faker.number.int({ min: 1, max: 15 }),
-      previous_company: faker.company.name(),
-      location_ceo: {
         id: id,
-        country: faker.location.country(),
-        state: faker.location.state(),
-        city: faker.location.city()
-      }
+        name: faker.person.fullName(),
+        age: faker.number.int({ min: 30, max: 70 }),
+        years_in_position: faker.number.int({ min: 1, max: 15 }),
+        previous_company: faker.company.name(),
+        location_id: locationId 
     };
-  };
+};
 
 export const generateData = () => {
     const companies = [];
     const ceos = [];
+    const locations = [];
+
     for (let i = 1; i <= 10; i++) {
-      const ceoId = 100 + i;
-      ceos.push(generateCeo(ceoId));
-      companies.push(generateCompany(i, ceoId));
+        const locationIdCompany = i;
+        const locationIdCeo = 100 + i;
+
+        locations.push(generateLocation(locationIdCompany));
+        locations.push(generateLocation(locationIdCeo));
+
+        const ceoId = 100 + i;
+        ceos.push(generateCeo(ceoId, locationIdCeo));
+        companies.push(generateCompany(i, ceoId, locationIdCompany));
     }
-  
-    const data = { companies, ceos };
+
+    const data = { companies, ceos, locations };
     fs.writeFileSync('companies.json', JSON.stringify(data, null, 2), (err) => {
-      if (err) {
-        console.error('Error:', err);
-      } else {
-        console.log('Data successfully saved to companies.json');
-      }
+        if (err) {
+            console.error('Error:', err);
+        } else {
+            console.log('Data successfully saved to companies.json');
+        }
     });
-  };
+};

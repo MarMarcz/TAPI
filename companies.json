@@ -11,12 +11,7 @@
       "pe_ratio": "16.77",
       "last_update": "2024-10-24",
       "ceo_id": 101,
-      "location": {
-        "id": 1,
-        "country": "Congo",
-        "state": "Utah",
-        "city": "Lake Hayliestad"
-      }
+      "location_id": 1
     },
     {
       "id": 2,
@@ -29,12 +24,7 @@
       "pe_ratio": "24.85",
       "last_update": "2024-10-24",
       "ceo_id": 102,
-      "location": {
-        "id": 2,
-        "country": "Brunei Darussalam",
-        "state": "Montana",
-        "city": "Port Rubymouth"
-      }
+      "location_id": 2
     },
     {
       "id": 3,
@@ -47,12 +37,7 @@
       "pe_ratio": "1.19",
       "last_update": "2024-10-24",
       "ceo_id": 103,
-      "location": {
-        "id": 3,
-        "country": "Nigeria",
-        "state": "Indiana",
-        "city": "McLaughlintown"
-      }
+      "location_id": 3
     },
     {
       "id": 4,
@@ -65,12 +50,7 @@
       "pe_ratio": "7.90",
       "last_update": "2024-10-25",
       "ceo_id": 104,
-      "location": {
-        "id": 4,
-        "country": "Wallis and Futuna",
-        "state": "Florida",
-        "city": "Adelbertbury"
-      }
+      "location_id": 4
     },
     {
       "id": 5,
@@ -83,12 +63,7 @@
       "pe_ratio": "3.23",
       "last_update": "2024-10-25",
       "ceo_id": 105,
-      "location": {
-        "id": 5,
-        "country": "Israel",
-        "state": "Delaware",
-        "city": "El Cajon"
-      }
+      "location_id": 5
     },
     {
       "id": 6,
@@ -101,12 +76,7 @@
       "pe_ratio": "29.44",
       "last_update": "2024-10-24",
       "ceo_id": 106,
-      "location": {
-        "id": 6,
-        "country": "Micronesia",
-        "state": "North Carolina",
-        "city": "Shawnee"
-      }
+      "location_id": 6
     },
     {
       "id": 7,
@@ -119,12 +89,7 @@
       "pe_ratio": "27.17",
       "last_update": "2024-10-25",
       "ceo_id": 107,
-      "location": {
-        "id": 7,
-        "country": "Guinea-Bissau",
-        "state": "Arkansas",
-        "city": "Fort Creola"
-      }
+      "location_id": 7
     },
     {
       "id": 8,
@@ -137,12 +102,7 @@
       "pe_ratio": "21.74",
       "last_update": "2024-10-25",
       "ceo_id": 108,
-      "location": {
-        "id": 8,
-        "country": "Poland",
-        "state": "New Mexico",
-        "city": "Edwinaworth"
-      }
+      "location_id": 8
     },
     {
       "id": 9,
@@ -155,14 +115,10 @@
       "pe_ratio": "6.67",
       "last_update": "2024-10-25",
       "ceo_id": 109,
-      "location": {
-        "id": 9,
-        "country": "United States Minor Outlying Islands",
-        "state": "Alaska",
-        "city": "Marquardtside"
-      }
+      "location_id": 9
     },
     {
+      "id": 10,
       "company_name": "Aufderhar, Nader and Rohan",
       "ticker": "ZLK",
       "industry": "Music",
@@ -171,14 +127,8 @@
       "annual_change_percentage": "%55.95",
       "pe_ratio": "38.14",
       "last_update": "2024-10-24",
-      "ceo_id": 111,
-      "location": {
-        "id": 10,
-        "country": "Libyan Arab Jamahiriya",
-        "state": "South Dakota",
-        "city": "Reichertboro"
-      },
-      "id": 10
+      "ceo_id": 110,
+      "location_id": 10
     }
   ],
   "ceos": [
@@ -188,12 +138,7 @@
       "age": 64,
       "years_in_position": 5,
       "previous_company": "Reichert, Dickens and Luettgen",
-      "location_ceo": {
-        "id": 101,
-        "country": "Greenland",
-        "state": "Georgia",
-        "city": "Wintheiserburgh"
-      }
+      "location_id": 101
     },
     {
       "id": 102,
@@ -201,12 +146,7 @@
       "age": 63,
       "years_in_position": 3,
       "previous_company": "Herzog - Kulas",
-      "location_ceo": {
-        "id": 102,
-        "country": "Lao People's Democratic Republic",
-        "state": "Vermont",
-        "city": "West Ramonborough"
-      }
+      "location_id": 102
     },
     {
       "id": 103,
@@ -214,12 +154,7 @@
       "age": 48,
       "years_in_position": 13,
       "previous_company": "Hackett, Douglas and Jacobson",
-      "location_ceo": {
-        "id": 103,
-        "country": "United States Minor Outlying Islands",
-        "state": "North Dakota",
-        "city": "Pacochatown"
-      }
+      "location_id": 103
     },
     {
       "id": 104,
@@ -227,12 +162,7 @@
       "age": 61,
       "years_in_position": 7,
       "previous_company": "Kuhic, O'Hara and Mills",
-      "location_ceo": {
-        "id": 104,
-        "country": "Andorra",
-        "state": "Kentucky",
-        "city": "Kearny"
-      }
+      "location_id": 104
     },
     {
       "id": 105,
@@ -240,12 +170,7 @@
       "age": 32,
       "years_in_position": 5,
       "previous_company": "Klein - Tillman",
-      "location_ceo": {
-        "id": 105,
-        "country": "Mexico",
-        "state": "Illinois",
-        "city": "North Kali"
-      }
+      "location_id": 105
     },
     {
       "id": 106,
@@ -253,12 +178,7 @@
       "age": 69,
       "years_in_position": 13,
       "previous_company": "Stokes, Herman and Effertz",
-      "location_ceo": {
-        "id": 106,
-        "country": "Sao Tome and Principe",
-        "state": "Vermont",
-        "city": "East Charlenetown"
-      }
+      "location_id": 106
     },
     {
       "id": 107,
@@ -266,12 +186,7 @@
       "age": 36,
       "years_in_position": 6,
       "previous_company": "Franey - Miller",
-      "location_ceo": {
-        "id": 107,
-        "country": "Vietnam",
-        "state": "Oklahoma",
-        "city": "Donnellymouth"
-      }
+      "location_id": 107
     },
     {
       "id": 108,
@@ -279,12 +194,7 @@
       "age": 58,
       "years_in_position": 14,
       "previous_company": "McKenzie - Bechtelar",
-      "location_ceo": {
-        "id": 108,
-        "country": "Gabon",
-        "state": "Minnesota",
-        "city": "Menifee"
-      }
+      "location_id": 108
     },
     {
       "id": 109,
@@ -292,12 +202,7 @@
       "age": 44,
       "years_in_position": 15,
       "previous_company": "Jerde - Beier",
-      "location_ceo": {
-        "id": 109,
-        "country": "Fiji",
-        "state": "Wyoming",
-        "city": "Killeen"
-      }
+      "location_id": 109
     },
     {
       "id": 110,
@@ -305,25 +210,129 @@
       "age": 57,
       "years_in_position": 15,
       "previous_company": "Langworth Group",
-      "location_ceo": {
-        "id": 110,
-        "country": "Haiti",
-        "state": "Iowa",
-        "city": "North Harmonmouth"
-      }
+      "location_id": 110
+    }
+  ],
+  "locations": [
+    {
+      "country": "India",
+      "state": "Oregon",
+      "city": "West Caesarland",
+      "id": 1
     },
     {
-      "name": "Salvador D'Amore",
-      "age": 64,
-      "years_in_position": 5,
-      "previous_company": "Reichert, Dickens and Luettgen",
-      "location_ceo": {
-        "id": 101,
-        "country": "Greenland",
-        "state": "Georgia",
-        "city": "Wintheiserburgh"
-      },
-      "id": 111
+      "id": 101,
+      "country": "Liechtenstein",
+      "state": "New Hampshire",
+      "city": "East Marleyhaven"
+    },
+    {
+      "id": 2,
+      "country": "Isle of Man",
+      "state": "Alaska",
+      "city": "Hoytview"
+    },
+    {
+      "id": 102,
+      "country": "Montenegro",
+      "state": "North Dakota",
+      "city": "Lake Kole"
+    },
+    {
+      "id": 3,
+      "country": "Malta",
+      "state": "Oklahoma",
+      "city": "New Sister"
+    },
+    {
+      "id": 103,
+      "country": "Ireland",
+      "state": "Florida",
+      "city": "Port Kyraport"
+    },
+    {
+      "id": 4,
+      "country": "Venezuela",
+      "state": "Nevada",
+      "city": "Portland"
+    },
+    {
+      "id": 104,
+      "country": "Burundi",
+      "state": "Idaho",
+      "city": "Everett"
+    },
+    {
+      "id": 5,
+      "country": "Cuba",
+      "state": "Utah",
+      "city": "Fort Jeffery"
+    },
+    {
+      "id": 105,
+      "country": "Belarus",
+      "state": "Kentucky",
+      "city": "Bradenton"
+    },
+    {
+      "id": 6,
+      "country": "Togo",
+      "state": "Kentucky",
+      "city": "Aspen Hill"
+    },
+    {
+      "id": 106,
+      "country": "Albania",
+      "state": "West Virginia",
+      "city": "Leonelhaven"
+    },
+    {
+      "id": 7,
+      "country": "Barbados",
+      "state": "Rhode Island",
+      "city": "Mitchellworth"
+    },
+    {
+      "id": 107,
+      "country": "Cape Verde",
+      "state": "Pennsylvania",
+      "city": "Daneborough"
+    },
+    {
+      "id": 8,
+      "country": "Taiwan",
+      "state": "Wisconsin",
+      "city": "Marietta"
+    },
+    {
+      "id": 108,
+      "country": "Czechia",
+      "state": "Alaska",
+      "city": "Brauliochester"
+    },
+    {
+      "id": 9,
+      "country": "Albania",
+      "state": "Montana",
+      "city": "Brettville"
+    },
+    {
+      "id": 109,
+      "country": "Myanmar",
+      "state": "Missouri",
+      "city": "Dietrichfort"
+    },
+    {
+      "id": 10,
+      "country": "Samoa",
+      "state": "Alaska",
+      "city": "Rohanmouth"
+    },
+    {
+      "id": 110,
+      "country": "Bosnia and Herzegovina",
+      "state": "North Carolina",
+      "city": "New Marietta"
     }
   ]
 }

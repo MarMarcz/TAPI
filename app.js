@@ -38,6 +38,22 @@ app.get('/ceos', (req, res) => {
   res.json(data.ceos);
 });
 
+app.get('/locations/', (req, res) => {
+  const data = readData();
+  const locations = data.locations;
+  res.json(data.locations);
+});
+
+app.get('/location/:id', (req, res) => {
+  const data = readData();
+  const location = data.locations.find(l => l.id === Number(req.params.id)); 
+  if (location) {
+    res.json(location); 
+  } else {
+    res.status(404).send('Location not found');
+  }
+});
+
 app.get('/company/:id', (req, res) => {
   const data = readData();
   const company = data.companies.find(c => c.id === Number(req.params.id)); 
@@ -47,7 +63,6 @@ app.get('/company/:id', (req, res) => {
     res.status(404).send('Company not found');
   }
 });
-
 
 app.get('/ceo/:id', (req, res) => {
   const data = readData();
@@ -90,7 +105,6 @@ app.put('/company/:id', (req, res) => {
   res.json(newCompany);
 });
 
-
 app.patch('/company/:id', (req, res) => {
   const data = readData();
   const companyIndex = data.companies.findIndex(c => c.id === Number(req.params.id)); 
@@ -107,7 +121,6 @@ app.patch('/company/:id', (req, res) => {
   res.json(updatedCompany);
 });
 
-//TODO: unique id for ceo
 app.post('/ceo', (req, res) => {
   const data = readData();
   const newCeo = req.body;
@@ -154,6 +167,51 @@ app.patch('/ceo/:id', (req, res) => {
   res.json(updatedCeo);
 });
 
+app.post('/location', (req, res) => {
+  const data = readData();
+  const newLocation = req.body;
+
+  const newId = data.locations.length > 0 ? Math.max(...data.locations.map(l => l.id)) + 1 : 1;
+  newLocation.id = newId;
+
+  data.locations.push(newLocation);
+  writeData(data);
+
+  res.status(201).json(newLocation);
+});
+
+app.put('/location/:id', (req, res) => {
+  const data = readData();
+  const locationIndex = data.locations.findIndex(l => l.id === Number(req.params.id));
+
+  if (locationIndex === -1) {
+    return res.status(404).send('Location not found');
+  }
+
+  const updatedLocation = req.body;
+  updatedLocation.id = Number(req.params.id); 
+
+  data.locations[locationIndex] = updatedLocation;
+  writeData(data);
+
+  res.json(updatedLocation);
+});
+
+app.patch('/location/:id', (req, res) => {
+  const data = readData();
+  const locationIndex = data.locations.findIndex(l => l.id === Number(req.params.id));
+
+  if (locationIndex === -1) {
+    return res.status(404).send('Location not found');
+  }
+
+  const updatedLocation = { ...data.locations[locationIndex], ...req.body };
+  data.locations[locationIndex] = updatedLocation;
+  
+  writeData(data);
+
+  res.json(updatedLocation);
+});
 
 app.delete('/company/:id', (req, res) => {
   const data = readData();
@@ -162,12 +220,21 @@ app.delete('/company/:id', (req, res) => {
   writeData(data); 
   res.send(`Deleted company with id: ${req.params.id}`);
 });
+
 app.delete('/ceo/:id', (req, res) => {
   const data = readData();
-  const updatedCompanies = data.ceos.filter(c => c.id !== Number(req.params.id));
-  data.companies = updatedCompanies; 
+  const updatedCeos = data.ceos.filter(c => c.id !== Number(req.params.id));
+  data.ceos = updatedCeos;
   writeData(data); 
-  res.send(`Deleted ceo with id: ${req.params.id}`);
+  res.send(`Deleted CEO with id: ${req.params.id}`);
+});
+
+app.delete('/location/:id', (req, res) => {
+  const data = readData();
+  const updatedLocations = data.locations.filter(c => c.id !== Number(req.params.id));
+  data.locations = updatedLocations;
+  writeData(data); 
+  res.send(`Deleted location with id: ${req.params.id}`);
 });
 
 app.listen(port, () => {
