@@ -11,6 +11,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeader('X-Powered-By', 'Express');
+  res.setHeader('X-Author', 'Martyna');
+  res.setHeader('Content-Type', 'application/json');
+  next();
+});
 
 generateData();
 

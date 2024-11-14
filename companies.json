@@ -22,7 +22,7 @@
       "stock_price": "$90.59",
       "annual_change_percentage": "%-2.65",
       "pe_ratio": "24.85",
-      "last_update": "2024-11-13",
+      "last_update": "2024-11-14",
       "ceo_id": 102,
       "location_id": 2
     },
@@ -205,12 +205,12 @@
       "location_id": 109
     },
     {
-      "name": "Salvador D'Amoree",
-      "age": 64,
-      "years_in_position": 5,
-      "previous_company": "Reichert, Dickens and Luettgen",
-      "location_id": 101,
-      "id": 110
+      "id": 110,
+      "name": "Madeline Moore",
+      "age": 57,
+      "years_in_position": 15,
+      "previous_company": "Langworth Group",
+      "location_id": 110
     }
   ],
   "locations": [
