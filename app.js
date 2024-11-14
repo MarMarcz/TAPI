@@ -23,6 +23,7 @@ const writeData = (data) => {
   fs.writeFileSync(path.join(__dirname, 'companies.json'), JSON.stringify(data, null, 2)); 
 };
 
+//COMPANIES
 app.get('/companies', (req, res) => {
   const data = readData();
   const companies = data.companies;
@@ -33,27 +34,6 @@ app.get('/companies', (req, res) => {
   }
 });  
 
-app.get('/ceos', (req, res) => {
-  const data = readData();
-  res.json(data.ceos);
-});
-
-app.get('/locations/', (req, res) => {
-  const data = readData();
-  const locations = data.locations;
-  res.json(data.locations);
-});
-
-app.get('/location/:id', (req, res) => {
-  const data = readData();
-  const location = data.locations.find(l => l.id === Number(req.params.id)); 
-  if (location) {
-    res.json(location); 
-  } else {
-    res.status(404).send('Location not found');
-  }
-});
-
 app.get('/company/:id', (req, res) => {
   const data = readData();
   const company = data.companies.find(c => c.id === Number(req.params.id)); 
@@ -61,16 +41,6 @@ app.get('/company/:id', (req, res) => {
     res.json(company); 
   } else {
     res.status(404).send('Company not found');
-  }
-});
-
-app.get('/ceo/:id', (req, res) => {
-  const data = readData();
-  const ceo = data.ceos.find(c => c.id === Number(req.params.id));
-  if (ceo) {
-    res.json(ceo);
-  } else {
-    res.status(404).send('CEO not found');
   }
 });
 
@@ -121,6 +91,30 @@ app.patch('/company/:id', (req, res) => {
   res.json(updatedCompany);
 });
 
+app.delete('/company/:id', (req, res) => {
+  const data = readData();
+  const updatedCompanies = data.companies.filter(c => c.id !== Number(req.params.id));
+  data.companies = updatedCompanies; 
+  writeData(data); 
+  res.send(`Deleted company with id: ${req.params.id}`);
+});
+
+//CEOS
+app.get('/ceos', (req, res) => {
+  const data = readData();
+  res.json(data.ceos);
+});
+
+app.get('/ceo/:id', (req, res) => {
+  const data = readData();
+  const ceo = data.ceos.find(c => c.id === Number(req.params.id));
+  if (ceo) {
+    res.json(ceo);
+  } else {
+    res.status(404).send('CEO not found');
+  }
+});
+
 app.post('/ceo', (req, res) => {
   const data = readData();
   const newCeo = req.body;
@@ -167,6 +161,31 @@ app.patch('/ceo/:id', (req, res) => {
   res.json(updatedCeo);
 });
 
+app.delete('/ceo/:id', (req, res) => {
+  const data = readData();
+  const updatedCeos = data.ceos.filter(c => c.id !== Number(req.params.id));
+  data.ceos = updatedCeos;
+  writeData(data); 
+  res.send(`Deleted CEO with id: ${req.params.id}`);
+});
+
+//LOCATIONS
+app.get('/locations/', (req, res) => {
+  const data = readData();
+  const locations = data.locations;
+  res.json(data.locations);
+});
+
+app.get('/location/:id', (req, res) => {
+  const data = readData();
+  const location = data.locations.find(l => l.id === Number(req.params.id)); 
+  if (location) {
+    res.json(location); 
+  } else {
+    res.status(404).send('Location not found');
+  }
+});
+
 app.post('/location', (req, res) => {
   const data = readData();
   const newLocation = req.body;
@@ -211,22 +230,6 @@ app.patch('/location/:id', (req, res) => {
   writeData(data);
 
   res.json(updatedLocation);
-});
-
-app.delete('/company/:id', (req, res) => {
-  const data = readData();
-  const updatedCompanies = data.companies.filter(c => c.id !== Number(req.params.id));
-  data.companies = updatedCompanies; 
-  writeData(data); 
-  res.send(`Deleted company with id: ${req.params.id}`);
-});
-
-app.delete('/ceo/:id', (req, res) => {
-  const data = readData();
-  const updatedCeos = data.ceos.filter(c => c.id !== Number(req.params.id));
-  data.ceos = updatedCeos;
-  writeData(data); 
-  res.send(`Deleted CEO with id: ${req.params.id}`);
 });
 
 app.delete('/location/:id', (req, res) => {
