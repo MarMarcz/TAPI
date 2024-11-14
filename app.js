@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -11,6 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.json());
+app.use(cors());
 app.use((req, res, next) => {
   res.setHeader('X-Powered-By', 'Express');
   res.setHeader('X-Author', 'Martyna');
@@ -34,7 +36,19 @@ app.get('/companies', (req, res) => {
   const data = readData();
   const companies = data.companies;
   if (companies && companies.length > 0) {
-    res.status(200).json(companies);
+    const companiesWithLinks = companies.map(company => ({
+      ...company,
+      links: [
+        { rel: "self", method: "GET", href: `http://localhost:3000/company/${company.id}` },
+        { rel: "update", method: "PUT", href: `http://localhost:3000/company/${company.id}` },
+        { rel: "partial_update", method: "PATCH", href: `http://localhost:3000/company/${company.id}` },
+        { rel: "delete", method: "DELETE", href: `http://localhost:3000/company/${company.id}` },
+        { rel: "ceo", method: "GET", href: `http://localhost:3000/ceo/${company.ceo_id}` },
+        { rel: "location", method: "GET", href: `http://localhost:3000/location/${company.location_id}` }
+      ]
+    }));
+
+    res.status(200).json(companiesWithLinks);
   } else {
     res.status(404).send('No companies found');
   }
@@ -44,7 +58,20 @@ app.get('/company/:id', (req, res) => {
   const data = readData();
   const company = data.companies.find(c => c.id === Number(req.params.id));
   if (company) {
-    res.status(200).json(company);
+    const companyWithLinks = {
+      ...company,
+      links: [
+        { rel: "self", method: "GET", href: `http://localhost:3000/company/${company.id}` },
+        { rel: "update", method: "PUT", href: `http://localhost:3000/company/${company.id}` },
+        { rel: "partial_update", method: "PATCH", href: `http://localhost:3000/company/${company.id}` },
+        { rel: "delete", method: "DELETE", href: `http://localhost:3000/company/${company.id}` },
+        { rel: "ceo", method: "GET", href: `http://localhost:3000/ceos/${company.ceo_id}` },
+        { rel: "location", method: "GET", href: `http://localhost:3000/locations/${company.location_id}` },
+        { rel: "all_companies", method: "GET", href: `http://localhost:3000/companies` }
+      ]
+    };
+
+    res.status(200).json(companyWithLinks);
   } else {
     res.status(404).send('Company not found');
   }
@@ -108,14 +135,30 @@ app.delete('/company/:id', (req, res) => {
 //CEOS
 app.get('/ceos', (req, res) => {
   const data = readData();
-  res.json(data.ceos);
+  const ceosWithLinks = data.ceos.map(ceo => ({
+    ...ceo,
+    links: [
+      { rel: "self", method: "GET", href: `http://localhost:3000/ceo/${ceo.id}` },
+      { rel: "previous_company", method: "GET", href: `http://localhost:3000/companies?name=${encodeURIComponent(ceo.previous_company)}` },
+      { rel: "location", method: "GET", href: `http://localhost:3000/location/${ceo.location_id}` }
+    ]
+  }));
+  res.status(200).json(ceosWithLinks);
 });
 
 app.get('/ceo/:id', (req, res) => {
   const data = readData();
   const ceo = data.ceos.find(c => c.id === Number(req.params.id));
   if (ceo) {
-    res.status(200).json(ceo);
+    const ceoWithLinks = {
+      ...ceo,
+      links: [
+        { rel: "self", method: "GET", href: `http://localhost:3000/ceo/${ceo.id}` },
+        { rel: "previous_company", method: "GET", href: `http://localhost:3000/companies?name=${encodeURIComponent(ceo.previous_company)}` },
+        { rel: "location", method: "GET", href: `http://localhost:3000/location/${ceo.location_id}` }
+      ]
+    };
+    res.status(200).json(ceoWithLinks);
   } else {
     res.status(404).send('CEO not found');
   }
@@ -185,15 +228,28 @@ app.delete('/ceo/:id', (req, res) => {
 //LOCATIONS
 app.get('/locations/', (req, res) => {
   const data = readData();
-  const locations = data.locations;
-  res.json(data.locations);
+  const locationsWithLinks = data.locations.map(location => ({
+    ...location,
+    links: [
+      { rel: "self", method: "GET", href: `http://localhost:3000/location/${location.id}` },
+      { rel: "companies_in_location", method: "GET", href: `http://localhost:3000/companies?location_id=${location.id}` }
+    ]
+  }));
+  res.status(200).json(locationsWithLinks);
 });
 
 app.get('/location/:id', (req, res) => {
   const data = readData();
   const location = data.locations.find(l => l.id === Number(req.params.id));
   if (location) {
-    res.status(200).json(location);
+    const locationWithLinks = {
+      ...location,
+      links: [
+        { rel: "self", method: "GET", href: `http://localhost:3000/location/${location.id}` },
+        { rel: "companies_in_location", method: "GET", href: `http://localhost:3000/companies?location_id=${location.id}` }
+      ]
+    };
+    res.status(200).json(locationWithLinks);
   } else {
     res.status(404).send('Location not found');
   }
