@@ -4,7 +4,6 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { generateData } from './assets/generate.js';
-// import { companyRouter } from './routes/companyRoute.js';
 
 const app = express();
 const port = 3000;
@@ -188,7 +187,7 @@ app.put('/ceo/:id', (req, res) => {
   const updatedCeo = req.body;
 
   if (!updatedCeo.name || !updatedCeo.age || !updatedCeo.years_in_position || !updatedCeo.previous_company || !updatedCeo.location_id) {
-    return res.status(400).send('Name and companyId are required');
+    return res.status(400).send('Ceo details are required');
   }
 
   updatedCeo.id = Number(req.params.id);
