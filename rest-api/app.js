@@ -4,7 +4,6 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { generateData } from './assets/generate.js';
-// import { companyRouter } from './routes/companyRoute.js';
 
 const app = express();
 const port = 3000;
