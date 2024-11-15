@@ -9,7 +9,7 @@
       "stock_price": "$119.63",
       "annual_change_percentage": "%35.43",
       "pe_ratio": "16.77",
-      "last_update": "2024-11-14",
+      "last_update": "2024-11-15",
       "ceo_id": 101,
       "location_id": 1
     },
@@ -126,9 +126,9 @@
       "stock_price": "$27.41",
       "annual_change_percentage": "%55.95",
       "pe_ratio": "38.14",
-      "last_update": "2024-10-24",
-      "ceo_id": 111,
-      "location_id": 1
+      "last_update": "2024-11-14",
+      "ceo_id": 110,
+      "location_id": 10
     }
   ],
   "ceos": [
