@@ -1,0 +1,35 @@
+type Location {
+  id: Int!
+  country: String!
+  state: String!
+  city: String!
+}
+
+type CEO {
+  id: Int!
+  name: String!
+  age: Int!
+  years_in_position: Int!
+  previous_company: String!
+  location_id: Int!
+}
+
+type Company {
+  id: Int!
+  company_name: String!
+  ticker: String!
+  industry: String!
+  market_cap: Int!
+  stock_price: String!
+  annual_change_percentage: String!
+  pe_ratio: String!
+  last_update: String!
+  ceo_id: Int!
+  location_id: Int!
+}
+
+type Query {
+  companies: [Company!]!
+  ceos: [CEO!]!
+  locations: [Location!]!
+}
