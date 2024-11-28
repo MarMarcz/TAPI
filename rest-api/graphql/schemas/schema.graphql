@@ -1,3 +1,5 @@
+scalar Date
+
 type Location {
   id: Int!
   country: String!
@@ -30,6 +32,59 @@ type Company {
 
 type Query {
   companies: [Company!]!
-  ceos: [CEO!]!
+  ceos(filter: CEOFilter): [CEO!]! 
   locations: [Location!]!
+}
+
+type Mutation {
+  createCompany(input: CompanyInput!): Company!
+  updateCompany(id: Int!, input: CompanyInput!): Company!
+  deleteCompany(id: Int!): Company!
+
+  createCEO(input: CEOInput!): CEO!
+  updateCEO(id: Int!, input: CEOInput!): CEO!
+  deleteCEO(id: Int!): CEO!
+
+  createLocation(input: LocationInput!): Location!
+  updateLocation(id: Int!, input: LocationInput!): Location!
+  deleteLocation(id: Int!): Location!
+}
+
+input CompanyInput {
+  company_name: String!
+  ticker: String!
+  industry: String!
+  market_cap: Int!
+  stock_price: String!
+  annual_change_percentage: String!
+  pe_ratio: String!
+  last_update: Date!
+  ceo_id: Int!
+  location_id: Int!
+}
+
+input CEOInput {
+  name: String!
+  age: Int!
+  years_in_position: Int!
+  previous_company: String!
+  location_id: Int!
+}
+
+input LocationInput {
+  country: String!
+  state: String!
+  city: String!
+}
+
+input CEOFilter {
+  years_in_position: NumberFilter
+}
+
+input NumberFilter {
+  equals: Int
+  greater_than: Int
+  less_than: Int
+  greater_or_equal: Int
+  less_or_equal: Int
 }
