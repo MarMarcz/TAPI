@@ -31,9 +31,9 @@ type Company {
 }
 
 type Query {
-  companies: [Company!]!
-  ceos(filter: CEOFilter): [CEO!]! 
-  locations: [Location!]!
+  companies(filter: CompanyFilter, sort: SortInput, pagination: PaginationInput): [Company!]!
+  ceos(filter: CEOFilter, sort: SortInput, pagination: PaginationInput): [CEO!]!
+  locations(filter: LocationFilter, sort: SortInput, pagination: PaginationInput): [Location!]!
 }
 
 type Mutation {
@@ -77,8 +77,20 @@ input LocationInput {
   city: String!
 }
 
+input CompanyFilter {
+  industry: String
+  market_cap_min: Int
+  market_cap_max: Int
+}
+
 input CEOFilter {
   years_in_position: NumberFilter
+  name: StringFilter
+}
+
+input LocationFilter {
+  country: String
+  city: String
 }
 
 input NumberFilter {
@@ -87,4 +99,20 @@ input NumberFilter {
   less_than: Int
   greater_or_equal: Int
   less_or_equal: Int
+}
+
+input StringFilter {
+  equals: String
+  contains: String
+  not_contains: String
+}
+
+input SortInput {
+  field: String!
+  order: String!
+}
+
+input PaginationInput {
+  page: Int!
+  pageSize: Int!
 }

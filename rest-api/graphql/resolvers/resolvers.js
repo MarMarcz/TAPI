@@ -16,46 +16,99 @@ const writeData = (data) => {
   fs.writeFileSync(path.join(__dirname, '../../companies.json'), JSON.stringify(data, null, 2));
 };
 
+const applyFilters = (data, filters) => {
+  if (!filters) return data;
+
+  return data.filter(item => {
+    return Object.keys(filters).every(field => {
+      const filterCondition = filters[field];
+      if (!filterCondition) return true;
+
+      let isValid = true;
+
+      if (filterCondition.equals !== undefined) {
+        isValid = isValid && item[field] === filterCondition.equals;
+      }
+      if (filterCondition.greater_than !== undefined) {
+        isValid = isValid && item[field] > filterCondition.greater_than;
+      }
+      if (filterCondition.less_than !== undefined) {
+        isValid = isValid && item[field] < filterCondition.less_than;
+      }
+      if (filterCondition.greater_or_equal !== undefined) {
+        isValid = isValid && item[field] >= filterCondition.greater_or_equal;
+      }
+      if (filterCondition.less_or_equal !== undefined) {
+        isValid = isValid && item[field] <= filterCondition.less_or_equal;
+      }
+      if (filterCondition.contains !== undefined) {
+        isValid = isValid && String(item[field]).includes(filterCondition.contains);
+      }
+      if (filterCondition.not_contains !== undefined) {
+        isValid = isValid && !String(item[field]).includes(filterCondition.not_contains);
+      }
+
+      return isValid;
+    });
+  });
+};
+
+const applySorting = (data, sort) => {
+  if (!sort) return data;
+
+  const { field, order } = sort;
+
+  return data.sort((a, b) => {
+    if (a[field] < b[field]) return order === 'asc' ? -1 : 1;
+    if (a[field] > b[field]) return order === 'asc' ? 1 : -1;
+    return 0;
+  });
+};
+
+const applyPagination = (data, pagination) => {
+  if (!pagination) return data;
+
+  const { page, pageSize } = pagination;
+  const start = (page - 1) * pageSize;
+  const end = start + pageSize;
+
+  return data.slice(start, end);
+};
+
 export const resolvers = {
   Query: {
-    companies: () => {
-      const data = readData();
-      return data.companies;
+    companies: (_, { filter, sort, pagination }) => {
+      const data = readData().companies;
+    
+      let result = applyFilters(data, filter);
+    
+      result = applySorting(result, sort);
+    
+      result = applyPagination(result, pagination);
+    
+      return result;
     },
-    ceos: (_, { filter }) => {
-      const data = readData();
-      let filteredCEOs = data.ceos;
+    ceos: (_, { filter, sort, pagination }) => {
+      const data = readData().ceos;
     
-      if (filter && filter.years_in_position) {
-        const { equals, greater_than, less_than, greater_or_equal, less_or_equal } = filter.years_in_position;
+      let result = applyFilters(data, filter);
     
-        filteredCEOs = filteredCEOs.filter(ceo => {
-          let isValid = true;
+      result = applySorting(result, sort);
     
-          if (equals !== undefined) {
-            isValid = isValid && ceo.years_in_position === equals;
-          }
-          if (greater_than !== undefined) {
-            isValid = isValid && ceo.years_in_position > greater_than;
-          }
-          if (less_than !== undefined) {
-            isValid = isValid && ceo.years_in_position < less_than;
-          }
-          if (greater_or_equal !== undefined) {
-            isValid = isValid && ceo.years_in_position >= greater_or_equal;
-          }
-          if (less_or_equal !== undefined) {
-            isValid = isValid && ceo.years_in_position <= less_or_equal;
-          }
+      result = applyPagination(result, pagination);
     
-          return isValid;
-        });
-      }
-      return filteredCEOs;
+      return result;
     },
-    locations: () => {
-      const data = readData();
-      return data.locations;
+    locations: (_, { filter, sort, pagination }) => {
+      const data = readData().locations;
+    
+      let result = applyFilters(data, filter);
+    
+      result = applySorting(result, sort);
+    
+      result = applyPagination(result, pagination);
+    
+      return result;
     },
   },
   Mutation: {
