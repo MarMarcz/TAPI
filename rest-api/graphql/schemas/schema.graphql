@@ -1,4 +1,4 @@
-scalar Date
+scalar URL
 
 type Location {
   id: Int!
@@ -31,6 +31,7 @@ type Company {
 }
 
 type Query {
+  validateURL(url: URL!): URL!
   companies(filter: CompanyFilter, sort: SortInput, pagination: PaginationInput): [Company!]!
   ceos(filter: CEOFilter, sort: SortInput, pagination: PaginationInput): [CEO!]!
   locations(filter: LocationFilter, sort: SortInput, pagination: PaginationInput): [Location!]!
@@ -58,7 +59,7 @@ input CompanyInput {
   stock_price: String!
   annual_change_percentage: String!
   pe_ratio: String!
-  last_update: Date!
+  last_update: String!
   ceo_id: Int!
   location_id: Int!
 }

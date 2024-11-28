@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { generateData } from '../../assets/generate.js';
 import { fileURLToPath } from 'url';
+import { GraphQLScalarType, Kind } from 'graphql';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -15,6 +16,35 @@ const readData = () => {
 const writeData = (data) => {
   fs.writeFileSync(path.join(__dirname, '../../companies.json'), JSON.stringify(data, null, 2));
 };
+
+const URLScalar = new GraphQLScalarType({
+  name: 'URL',
+  description: 'Customowy scalar do obsługi poprawnych adresów URL',
+  serialize(value) {
+    try {
+      return new URL(value).toString();
+    } catch {
+      throw new Error('Nieprawidłowy URL.');
+    }
+  },
+  parseValue(value) {
+    try {
+      return new URL(value).toString();
+    } catch {
+      throw new Error('Nieprawidłowy URL.');
+    }
+  },
+  parseLiteral(ast) {
+    if (ast.kind === Kind.STRING) {
+      try {
+        return new URL(ast.value).toString();
+      } catch {
+        throw new Error('Nieprawidłowy URL.');
+      }
+    }
+    throw new Error('Scalar URL akceptuje tylko ciągi znaków.');
+  },
+});
 
 const applyFilters = (data, filters) => {
   if (!filters) return data;
@@ -76,7 +106,11 @@ const applyPagination = (data, pagination) => {
 };
 
 export const resolvers = {
+  URL: URLScalar,
   Query: {
+    validateURL: (_, { url }) => {
+      return url;
+    },
     companies: (_, { filter, sort, pagination }) => {
       const data = readData().companies;
     
