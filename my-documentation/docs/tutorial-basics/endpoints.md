@@ -5,6 +5,8 @@ sidebar_position: 1
 
 This API provides endpoints to manage companies, CEOs, and locations. Below is the complete list of supported operations.
 
+For detailed and interactive documentation, visit the [Swagger API Documentation](/docs/intro).
+
 ### **Companies**
 
 #### **GET `/companies`**
