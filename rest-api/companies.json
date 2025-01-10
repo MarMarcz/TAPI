@@ -9,7 +9,7 @@
       "stock_price": "$119.63",
       "annual_change_percentage": "%35.43",
       "pe_ratio": "16.77",
-      "last_update": "2024-12-20",
+      "last_update": "2025-01-09",
       "ceo_id": 101,
       "location_id": 1
     },
@@ -22,7 +22,7 @@
       "stock_price": "$90.59",
       "annual_change_percentage": "%-2.65",
       "pe_ratio": "24.85",
-      "last_update": "2024-12-19",
+      "last_update": "2025-01-09",
       "ceo_id": 102,
       "location_id": 2
     },
@@ -35,7 +35,7 @@
       "stock_price": "$16.38",
       "annual_change_percentage": "%21.71",
       "pe_ratio": "1.19",
-      "last_update": "2024-12-19",
+      "last_update": "2025-01-09",
       "ceo_id": 103,
       "location_id": 3
     },
@@ -48,7 +48,7 @@
       "stock_price": "$131.00",
       "annual_change_percentage": "%69.12",
       "pe_ratio": "7.90",
-      "last_update": "2024-12-20",
+      "last_update": "2025-01-10",
       "ceo_id": 104,
       "location_id": 4
     },
@@ -61,7 +61,7 @@
       "stock_price": "$89.74",
       "annual_change_percentage": "%-13.72",
       "pe_ratio": "3.23",
-      "last_update": "2024-12-20",
+      "last_update": "2025-01-10",
       "ceo_id": 105,
       "location_id": 5
     },
@@ -74,7 +74,7 @@
       "stock_price": "$187.13",
       "annual_change_percentage": "%21.34",
       "pe_ratio": "29.44",
-      "last_update": "2024-12-19",
+      "last_update": "2025-01-09",
       "ceo_id": 106,
       "location_id": 6
     },
@@ -87,7 +87,7 @@
       "stock_price": "$81.26",
       "annual_change_percentage": "%29.98",
       "pe_ratio": "27.17",
-      "last_update": "2024-12-20",
+      "last_update": "2025-01-10",
       "ceo_id": 107,
       "location_id": 7
     },
@@ -100,7 +100,7 @@
       "stock_price": "$144.04",
       "annual_change_percentage": "%37.75",
       "pe_ratio": "21.74",
-      "last_update": "2024-12-20",
+      "last_update": "2025-01-10",
       "ceo_id": 108,
       "location_id": 8
     },
@@ -113,7 +113,7 @@
       "stock_price": "$26.13",
       "annual_change_percentage": "%8.37",
       "pe_ratio": "6.67",
-      "last_update": "2024-12-20",
+      "last_update": "2025-01-10",
       "ceo_id": 109,
       "location_id": 9
     },
@@ -126,7 +126,7 @@
       "stock_price": "$27.41",
       "annual_change_percentage": "%55.95",
       "pe_ratio": "38.14",
-      "last_update": "2024-12-19",
+      "last_update": "2025-01-09",
       "ceo_id": 110,
       "location_id": 10
     }
